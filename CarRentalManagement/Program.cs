@@ -1,6 +1,5 @@
 ﻿using CarRentalManagement.Components;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using CarRentalManagement.Data;
 using CarRentalManagement.Components.Account;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -34,6 +33,7 @@ builder.Services.AddAuthentication(options =>
     .AddIdentityCookies();
 
 builder.Services.AddIdentityCore<CarRentalManagementUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<CarRentalManagementContext>()
     .AddSignInManager()
     .AddDefaultTokenProviders();
